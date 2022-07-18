@@ -10,10 +10,7 @@ class ProductList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      height: 640,
-      width: MediaQuery.of(context).size.width,
-      color: Colors.white,
+    return Flexible(
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
           childAspectRatio: 0.70,

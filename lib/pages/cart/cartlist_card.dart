@@ -15,81 +15,86 @@ class CartListCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
-      height: 130.0,
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: Colors.orange[700],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 10.0, vertical: 8.0),
+      child: PhysicalModel(
+        color: Colors.white,
+        shadowColor: Colors.black54,
+        elevation: 5.0,
         borderRadius: BorderRadius.circular(13),
-      ),
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
+        child: SizedBox(
+          height: 90.0,
+          width: double.infinity,
+          child: Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                //Image
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(13),
-                  child: SizedBox(
-                    height: 110.0,
-                    width: 110.0,
-                    child: Image.network(
-                      product.imageUrl,
-                      fit: BoxFit.fill,
-                    ),
-                  ),
-                ),
-
-                // SizedBox for spacing
-                const SizedBox(
-                  width: 10.0,
-                ),
-
-                // Column for Name and Price
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
                   children: [
-                    // SizedBox for spacing
-                    const SizedBox(
-                      height: 8.0,
-                    ),
-
-                    Text(
-                      product.name,
-                      style: const TextStyle(
-                        fontSize: 19,
-                        fontWeight: FontWeight.w600,
+                    //Image
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(13),
+                      child: SizedBox(
+                        height: 80.0,
+                        width: 80.0,
+                        child: Image.network(
+                          product.imageUrl,
+                          fit: BoxFit.fill,
+                        ),
                       ),
                     ),
 
                     // SizedBox for spacing
                     const SizedBox(
-                      height: 8.0,
+                      width: 10.0,
                     ),
 
-                    Text(
-                      "₹${product.price}",
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.w600,
-                      ),
+                    // Column for Name and Price
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        // SizedBox for spacing
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+
+                        Text(
+                          product.name,
+                          style: const TextStyle(
+                            fontSize: 19,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+
+                        // SizedBox for spacing
+                        const SizedBox(
+                          height: 8.0,
+                        ),
+
+                        Text(
+                          "₹${product.price}",
+                          style: const TextStyle(
+                            fontSize: 16,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
+
+                // Remove Button
+                IconButton(
+                  icon: const Icon(Icons.remove_circle_outline),
+                  onPressed: () {
+                    controller.removeProduct(product);
+                  },
+                ),
               ],
             ),
-
-            // Remove Button
-            IconButton(
-              icon: const Icon(Icons.remove_circle_outline),
-              onPressed: () {
-                controller.removeProduct(product);
-              },
-            ),
-          ],
+          ),
         ),
       ),
     );

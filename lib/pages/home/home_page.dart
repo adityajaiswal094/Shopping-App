@@ -20,6 +20,17 @@ class Homepage extends StatelessWidget {
           ProductList(),
         ],
       ),
+      bottomNavigationBar: BottomNavigationBar(items: const [
+        BottomNavigationBarItem(
+          icon: Icon(Icons.home_outlined),
+          label: "Home",
+        ),
+        BottomNavigationBarItem(
+          icon: Icon(Icons.favorite_border_rounded),
+          label: "Favorite",
+        ),
+        BottomNavigationBarItem(icon: Icon(Icons.settings), label: "Settings"),
+      ]),
     );
   }
 }

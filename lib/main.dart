@@ -16,9 +16,6 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Shopping App',
-      theme: ThemeData(
-        primarySwatch: Colors.deepOrange,
-      ),
       getPages: [
         GetPage(name: "/home", page: () => Homepage()),
         GetPage(name: "/cartpage", page: () => CartPage()),

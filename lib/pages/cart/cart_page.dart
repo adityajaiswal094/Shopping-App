@@ -11,20 +11,24 @@ class CartPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.white,
         elevation: 0.0,
         leading: IconButton(
           onPressed: () {
             Get.back();
           },
-          icon: const Icon(Icons.arrow_back_ios_new_rounded),
+          icon: Icon(Icons.arrow_back_ios_new_rounded, color: Colors.blue[900]),
         ),
-        title: const Text("Shopping Bag"),
+        title: Text(
+          "Shopping Bag",
+          style: TextStyle(color: Colors.blue[900]),
+        ),
       ),
       body: Obx(
         () => Column(
           children: [
-            Container(
-              color: Colors.white,
+            SizedBox(
+              // color: Colors.deepPurple[300],
               height: 630,
               child: controller.cartList.isEmpty
                   ? cartIsEmpty()
@@ -64,27 +68,33 @@ class CartPage extends StatelessWidget {
                           fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
-                  SizedBox(
-                    width: 100.0,
-                    height: 40.0,
-                    child: ElevatedButton(
-                      onPressed: () {
-                        Get.snackbar(
-                          "Payment Successful",
-                          "Order has been placed.",
-                          duration: const Duration(seconds: 1),
-                          snackPosition: SnackPosition.BOTTOM,
-                          margin: const EdgeInsets.symmetric(
-                            vertical: 12.0,
-                            horizontal: 12.0,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(14),
+                    child: SizedBox(
+                      width: 100.0,
+                      height: 40.0,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Get.snackbar(
+                            "Payment Successful",
+                            "Order has been placed.",
+                            duration: const Duration(seconds: 1),
+                            snackPosition: SnackPosition.BOTTOM,
+                            margin: const EdgeInsets.symmetric(
+                              vertical: 12.0,
+                              horizontal: 12.0,
+                            ),
+                          );
+                        },
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.blue[800])),
+                        child: const Text(
+                          "Pay",
+                          style: TextStyle(
+                            fontSize: 22,
+                            fontWeight: FontWeight.w600,
                           ),
-                        );
-                      },
-                      child: const Text(
-                        "Pay",
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.w600,
                         ),
                       ),
                     ),
