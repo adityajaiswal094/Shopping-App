@@ -25,7 +25,7 @@ class CartPage extends StatelessWidget {
           children: [
             Container(
               color: Colors.white,
-              height: 680,
+              height: 630,
               child: controller.cartList.isEmpty
                   ? cartIsEmpty()
                   : ListView.builder(
@@ -61,7 +61,7 @@ class CartPage extends StatelessWidget {
                           ? "₹0"
                           : "₹${controller.total}",
                       style: const TextStyle(
-                          fontSize: 20, fontWeight: FontWeight.bold),
+                          fontSize: 18, fontWeight: FontWeight.bold),
                     ),
                   ),
                   SizedBox(
@@ -74,7 +74,10 @@ class CartPage extends StatelessWidget {
                           "Order has been placed.",
                           duration: const Duration(seconds: 1),
                           snackPosition: SnackPosition.BOTTOM,
-                          // snackStyle: SnackStyle.GROUNDED,
+                          margin: const EdgeInsets.symmetric(
+                            vertical: 12.0,
+                            horizontal: 12.0,
+                          ),
                         );
                       },
                       child: const Text(

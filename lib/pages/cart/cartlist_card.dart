@@ -60,7 +60,7 @@ class CartListCard extends StatelessWidget {
                     Text(
                       product.name,
                       style: const TextStyle(
-                        fontSize: 22,
+                        fontSize: 19,
                         fontWeight: FontWeight.w600,
                       ),
                     ),

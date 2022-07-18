@@ -11,12 +11,12 @@ class ProductList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 700,
+      height: 640,
       width: MediaQuery.of(context).size.width,
       color: Colors.white,
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          childAspectRatio: 0.80,
+          childAspectRatio: 0.70,
           crossAxisCount: 2,
           crossAxisSpacing: 0.5,
           mainAxisSpacing: 0.5,
@@ -51,7 +51,7 @@ class ProductList extends StatelessWidget {
                           Text(
                             Product.products[index].name,
                             style: const TextStyle(
-                                fontSize: 16, fontWeight: FontWeight.w600),
+                                fontSize: 15, fontWeight: FontWeight.w600),
                           ),
                           const SizedBox(
                             height: 5.0,
