@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopping_cart/model/cart.dart';
@@ -28,9 +29,9 @@ class ProductList extends StatelessWidget {
                 SizedBox(
                   height: 190,
                   width: double.infinity,
-                  child: Image.network(
-                    Product.products[index].imageUrl,
-                    fit: BoxFit.fill,
+                  child: CachedNetworkImage(
+                    imageUrl: Product.products[index].imageUrl,
+                    fit: BoxFit.cover,
                   ),
                 ),
 

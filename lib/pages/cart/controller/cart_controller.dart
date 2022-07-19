@@ -35,7 +35,10 @@ class CartController extends GetxController {
   // icon change for item added or removed
   Icon productAddRemove(Product product) {
     return _cartList[product] == 1
-        ? const Icon(Icons.remove_circle_outline_rounded)
+        ? Icon(
+            Icons.remove_circle_rounded,
+            color: Colors.grey[600],
+          )
         : const Icon(Icons.add_circle_outline_rounded);
   }
 }

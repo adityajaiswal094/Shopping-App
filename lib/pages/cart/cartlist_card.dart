@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:shopping_cart/model/cart.dart';
@@ -39,8 +40,8 @@ class CartListCard extends StatelessWidget {
                       child: SizedBox(
                         height: 80.0,
                         width: 80.0,
-                        child: Image.network(
-                          product.imageUrl,
+                        child: CachedNetworkImage(
+                          imageUrl: product.imageUrl,
                           fit: BoxFit.fill,
                         ),
                       ),
@@ -64,7 +65,8 @@ class CartListCard extends StatelessWidget {
                           product.name,
                           style: const TextStyle(
                             fontSize: 19,
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black87,
                           ),
                         ),
 
@@ -77,7 +79,8 @@ class CartListCard extends StatelessWidget {
                           "₹${product.price}",
                           style: const TextStyle(
                             fontSize: 16,
-                            fontWeight: FontWeight.w600,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.black87,
                           ),
                         ),
                       ],
@@ -87,7 +90,10 @@ class CartListCard extends StatelessWidget {
 
                 // Remove Button
                 IconButton(
-                  icon: const Icon(Icons.remove_circle_outline),
+                  icon: Icon(
+                    Icons.remove_circle_rounded,
+                    color: Colors.grey[600],
+                  ),
                   onPressed: () {
                     controller.removeProduct(product);
                   },

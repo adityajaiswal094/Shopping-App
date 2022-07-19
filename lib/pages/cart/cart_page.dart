@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:shopping_cart/pages/cart/cartlist_card.dart';
 import 'package:shopping_cart/pages/cart/controller/cart_controller.dart';
@@ -27,9 +28,8 @@ class CartPage extends StatelessWidget {
       body: Obx(
         () => Column(
           children: [
-            SizedBox(
-              // color: Colors.deepPurple[300],
-              height: 630,
+            // List of items
+            Flexible(
               child: controller.cartList.isEmpty
                   ? cartIsEmpty()
                   : ListView.builder(
@@ -43,31 +43,24 @@ class CartPage extends StatelessWidget {
                     ),
             ),
 
-            // Divider
-            const Divider(
-              thickness: 1.5,
-              height: 0.0,
-            ),
-
-            // SizedBox for spacing
-            const SizedBox(
-              height: 18.0,
-            ),
-            // Cart Total Amount
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 18.0),
+            // Total Amount and Pay Button
+            Container(
+              padding:
+                  const EdgeInsets.symmetric(vertical: 10.0, horizontal: 14.0),
+              decoration: const BoxDecoration(
+                border: Border(top: BorderSide(color: Colors.grey)),
+              ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Obx(
-                    () => Text(
-                      controller.cartList.isEmpty
-                          ? "₹0"
-                          : "₹${controller.total}",
-                      style: const TextStyle(
-                          fontSize: 18, fontWeight: FontWeight.bold),
-                    ),
+                  // Obx(
+                  //   () =>
+                  Text(
+                    controller.cartList.isEmpty ? "₹0" : "₹${controller.total}",
+                    style: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
                   ),
+                  // ),
                   ClipRRect(
                     borderRadius: BorderRadius.circular(14),
                     child: SizedBox(
@@ -75,15 +68,11 @@ class CartPage extends StatelessWidget {
                       height: 40.0,
                       child: ElevatedButton(
                         onPressed: () {
-                          Get.snackbar(
-                            "Payment Successful",
-                            "Order has been placed.",
-                            duration: const Duration(seconds: 1),
-                            snackPosition: SnackPosition.BOTTOM,
-                            margin: const EdgeInsets.symmetric(
-                              vertical: 12.0,
-                              horizontal: 12.0,
-                            ),
+                          Fluttertoast.showToast(
+                            msg: "Payment Successful",
+                            toastLength: Toast.LENGTH_SHORT,
+                            gravity: ToastGravity.BOTTOM,
+                            backgroundColor: Colors.grey[600],
                           );
                         },
                         style: ButtonStyle(
@@ -104,6 +93,8 @@ class CartPage extends StatelessWidget {
             ),
           ],
         ),
+
+        // Amount and Pay button
       ),
     );
   }
@@ -117,7 +108,7 @@ class CartPage extends StatelessWidget {
             "Hey, it feels so light!",
             style: TextStyle(
               fontSize: 22,
-              fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.w500,
             ),
           ),
           SizedBox(
